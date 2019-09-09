@@ -1,0 +1,19 @@
+{
+    "name": "meet/api-response",
+    "description": "generic Rest-API response manager.",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "meetparikh",
+            "email": "meetparikh71@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Meet\\ApiResponse\\": "src/"
+        }
+    }
+}
