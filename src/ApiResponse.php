@@ -35,11 +35,15 @@ class ApiResponse
         $code = 500,
         $data = null
     ) {
-        self::$errorResponse['error']['message'] = $message;
-        self::$errorResponse['error']['status'] = $status;
-        self::$errorResponse['error']['code'] = $code;
-        $data != null ? self::$errorResponse['error']['data'] = $data : null;
-        return self::$errorResponse;
+        try {
+            self::$errorResponse['error']['message'] = $message;
+            self::$errorResponse['error']['status'] = $status;
+            self::$errorResponse['error']['code'] = $code;
+            $data != null ? self::$errorResponse['error']['data'] = $data : null;
+            return self::$errorResponse;
+        } catch (Exception $e) {
+            throw new Exception("Something wrong with package.");
+        }
     }
 
 
@@ -58,10 +62,14 @@ class ApiResponse
         $message = 'you got what you needed.',
         $code = 200
     ) {
-        self::$successResponse['Success']['status'] = $status;
-        self::$successResponse['Success']['code'] = $code;
-        self::$successResponse['Success']['message'] = $message;
-        self::$successResponse['Success']['data'] = $data;
-        return self::$successResponse;
+        try {
+            self::$successResponse['Success']['status'] = $status;
+            self::$successResponse['Success']['code'] = $code;
+            self::$successResponse['Success']['message'] = $message;
+            self::$successResponse['Success']['data'] = $data;
+            return self::$successResponse;
+        } catch (Exception $e) {
+            throw new Exception("Something wrong with package.");
+        }
     }
 }
